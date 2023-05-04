@@ -18,7 +18,7 @@ export function SwaggerValidation(config: object) {
         }
 
         if (file && typeof swaggerSchema[file] === 'undefined' || !swaggerSchema[file]) {
-            swaggerSchema[file] = await Parser.dereference(file);
+            swaggerSchema[file] = await Parser.dereference(file,{ dereference: { circular: "ignore" }, });
         }
         return swaggerSchema[file];
     };
@@ -62,27 +62,30 @@ export function SwaggerValidation(config: object) {
             endpoint = endpoint.shift();
 
             // Now validate the endpoint schema against the response
-            const Ajv = require('ajv')({
+            const Ajv = require('ajv');
+            const addFormats = require('ajv-formats');
+            const ajv = new Ajv({
                 allErrors: true,
                 format: 'full',
                 nullable: true,
                 verbose: true,
             });
+            addFormats(ajv);
 
             if (verbose) {
                 log.debug('Endpoint:', options.endpoint);
                 log.debug('Response Schema:', JSON.stringify(options.responseSchema, null, 2));
             }
 
-            const valid = Ajv.validate(endpoint, options.responseSchema);
-            if (valid && !Ajv.errors) {
+            const valid = ajv.validate(endpoint, options.responseSchema);
+            if (valid && !ajv.errors) {
                 if (verbose) {
                     log.success('Validation Success');
                 }
                 return null;
             } else {
-                log.error(Ajv.errorsText());
-                return Ajv.errorsText();
+                log.error(ajv.errorsText());
+                return ajv.errorsText();
             }
         },
 
@@ -96,11 +99,11 @@ export function SwaggerValidation(config: object) {
             const schema  = await getSwaggerSchema(config, options?.file || null);
 
             try {
-                let api = await SwaggerParser.validate(schema || "");
+                let api = await SwaggerParser.validate(schema || "",{ dereference: { circular: "ignore" }, });
                 log.info("API name: %s, Version: %s", api.info.title, api.info.version);
                 return null;
             } catch(err) {
-                return err;
+                return (err as Error);
             }
         }
     };

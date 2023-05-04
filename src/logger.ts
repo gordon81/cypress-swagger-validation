@@ -1,4 +1,4 @@
-import * as chalk from 'chalk';
+const chalk = require('chalk')
 import * as _ from 'lodash';
 
 export default class Logger {
