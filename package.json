@@ -4,6 +4,7 @@
   "description": "Validate your Swagger file and request responses against Swagger Endpoints",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
+  "type": "module",
   "author": "Jamie Curnow <jc@jc21.com>",
   "license": "MIT",
   "keywords": [

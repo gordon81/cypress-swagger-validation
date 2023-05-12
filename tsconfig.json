@@ -1,17 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "module": "commonjs",
+    "rootDirs": ["src"],
+    "outDir": "lib",
+    "lib": ["ES2022"],
+    "target": "ES2022",
+    "module": "ES2022",
+    "composite": true,
+    "moduleResolution": "node",
     "declaration": true,
-    "sourceMap": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": false,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "baseUrl": "./packages",
-    "paths": {
-      "@nofrills/*": ["./*/src"]
-    }
-  }
+    "declarationMap": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "types": ["jest", "node", "@types/jest"],
+    "sourceMap": true
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
+  "include": ["./src/**/*", "./tests/**/*"]
 }
