@@ -44,6 +44,7 @@ export function SwaggerValidation(config: object) {
      * @param   {string}        options.method
      * @param   {number}        options.statusCode
      * @param   {object}        options.responseSchema
+     * @param   {string}        options.contentType
      * @param   {boolean}       [options.verbose]
      * @param   {string}        [options.file]
      * @returns {string|null}   Errors or null if OK
@@ -74,7 +75,9 @@ export function SwaggerValidation(config: object) {
         options.method +
         '.responses.' +
         options.statusCode +
-        ".content['application/json'].schema";
+        ".content['" +
+        options.contentType +
+        "'].schema";
       let endpoint = JsonPath.query(schema, ref);
 
       if (!endpoint || !endpoint.length) {
@@ -83,15 +86,16 @@ export function SwaggerValidation(config: object) {
 
       // The endpoint var should be an array of found items with only 1 item ideally.
       endpoint = endpoint.shift();
+      endpoint[0].components = JsonPath.query(schema,'$.components')[0];
 
       // Now validate the endpoint schema against the response
-      const ajv = new Ajv({
-        allErrors: true,
-        // format: 'full',
-        // nullable: true,
-        parseDate: true,
-        verbose: true,
-      });
+      const ajv = new Ajv();
+            ajv.addKeyword({
+                keyword: "components",
+                type: "object"});
+            ajv.addKeyword({
+                keyword: "xml",
+                type: "object"});
       addFormats(ajv);
 
       if (verbose) {
@@ -102,10 +106,10 @@ export function SwaggerValidation(config: object) {
         );
       }
 
-      const valid = true; /*ajv.validate(endpoint, {
+      const valid = ajv.validate(endpoint, {
         ...options.responseSchema,
         strict: false,
-      });*/
+      });
       if (valid && !ajv.errors) {
         if (verbose) {
           log.success('Validation Success');
