@@ -4,5 +4,6 @@ export interface IOptions {
     method: string;
     statusCode: number;
     responseSchema: object;
+    contentType: string;
     verbose?: boolean;
 }

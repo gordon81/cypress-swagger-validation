@@ -1,4 +1,4 @@
-import SwaggerValidation from './index';
+import {SwaggerValidation} from './index';
 
 test('test valid JSON swagger file', async () => {
   const sv = SwaggerValidation({
@@ -44,6 +44,7 @@ test('test JSON swagger doc', async () => {
         healthy: true,
       },
     },
+    contentType: 'application/json',
     statusCode: 200,
     verbose: true,
   });
@@ -73,6 +74,7 @@ test('test YML swagger doc', async () => {
       },
     },
     statusCode: 200,
+    contentType: 'application/json',
     verbose: true,
   });
 
@@ -99,6 +101,7 @@ test('test JSON swagger doc Invalid', async () => {
         healthy: true,
       },
     },
+    contentType: 'application/json',
     statusCode: 200,
     verbose: true,
   });
@@ -129,6 +132,7 @@ test('test YML swagger doc Invalid', async () => {
         healthy: true,
       },
     },
+    contentType: 'application/json',
     statusCode: 200,
     verbose: true,
   });

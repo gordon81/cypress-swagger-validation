@@ -1,0 +1,5804 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "CMS Core API",
+    "description": "TYPO3 CMS headless API documentation",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Finanztip CMSC Team",
+      "url": "https://www.finanztip.de"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://ft-api.ddev.site/v1",
+      "description": "local DDEV server"
+    },
+    {
+      "url": "https://api.cmscore.private.finanztip.test/v1",
+      "description": "Local Development server"
+    },
+    {
+      "url": "https://api.cmscore.private.its1.finanztip.de/v1",
+      "description": "ITS1 testing"
+    },
+    {
+      "url": "https://api.cmscore.private.its2.finanztip.de/v1",
+      "description": "ITS2 testing"
+    },
+    {
+      "url": "https://api.cmscore.private.its3.finanztip.de/v1",
+      "description": "ITS3 testing"
+    },
+    {
+      "url": "https://api.cmscore.private.finanztip.de/v1",
+      "description": "Production server"
+    },
+    {
+      "url": "https://redaktion.its3.finanztip.de/v1",
+      "description": "ITS3 open testing"
+    }
+  ],
+  "tags": [
+    {
+      "name": "finanztip"
+    }
+  ],
+  "paths": {
+    "/docs": {
+      "get": {
+        "description": "Display TYPO3 CMS Core API documentation",
+        "summary": "Show HTML version of this document.",
+        "operationId": "Finanztip\\FtApi\\Controller\\DocsController:show",
+        "responses": {
+          "200": {
+            "description": "API documentation",
+            "content": {
+              "application/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/HtmlContent"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schema": {
+      "get": {
+        "description": "Plain Open Api Configuration",
+        "summary": "Show this document",
+        "operationId": "Finanztip\\FtApi\\Controller\\DocsController:getFile",
+        "responses": {
+          "200": {
+            "description": "plain API documentation",
+            "content": {
+              "application/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/HtmlContent"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/page/{pageId}": {
+      "get": {
+        "description": "Returns page based on ID",
+        "summary": "Find page by ID",
+        "operationId": "Finanztip\\FtApi\\Controller\\PageController:getPage",
+        "responses": {
+          "200": {
+            "description": "Page response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "$ref": "#/components/schemas/Page"
+                    },
+                    "contentElements": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "$ref": "#/components/schemas/HeaderElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/TextElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/TextMediaElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/TableElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/BulletsElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/DividerElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/FeaturelistElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/FtIntroboxElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/FtTrustElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/ImageElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/RecommendationboxElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/NewsletterregisterformElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/ExpertQuoteElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/ShortcutElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/FAQElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/PodcastElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/CollapsibleElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/QuoteElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/HeroElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SearchBoxElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/RessortsElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/SocialMediaBarElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/StickyElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/BenefitsElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/ReputationboxElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/TrustPilotElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/ExpertElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/HtmlElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/PopularElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/MenuSitemapPageElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/MenuPagesElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/MenuSubPagesElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/CoronaMapElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/StyleGuideElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/CtaSectionElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/DealsElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/AppPromoElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/DealsPromoElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/ExperiencePortalPromoElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/FtSupportPromoElement"
+                          },
+                          {
+                            "$ref": "#/components/schemas/Author"
+                          },
+                          {
+                            "$ref": "#/components/schemas/News"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnexpectedError"
+          },
+          "default": {
+            "description": "error payload"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/pageId"
+          }
+        ],
+        "security": [
+          {
+            "BasicAuth": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/navigation/{entryPoints}": {
+      "get": {
+        "description": "Returns navigation",
+        "summary": "navigation",
+        "operationId": "Finanztip\\FtApi\\Controller\\NavigationController:getNavigation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/entryPoints"
+          },
+          {
+            "$ref": "#/components/parameters/depth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Navigation"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnexpectedError"
+          },
+          "default": {
+            "description": "error payload"
+          }
+        },
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "entryPoints": {
+        "name": "entryPoints",
+        "in": "path",
+        "required": true,
+        "description": "Get the navigations per bit (header=1, main=2 or footer=4)",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "style": "simple"
+      },
+      "pageId": {
+        "name": "pageId",
+        "in": "path",
+        "description": "ID of page to return",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "depth": {
+        "name": "depth",
+        "in": "query",
+        "required": false,
+        "description": "Set depth of menu levels (default 0)",
+        "schema": {
+          "type": "integer",
+          "default": 0
+        }
+      }
+    },
+    "schemas": {
+      "Assets": {
+        "type": "object",
+        "required": [
+          "uid"
+        ],
+        "nullable": true,
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "extension": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "mimetype": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "url": {
+            "type": "string"
+          },
+          "identifier": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "alternative": {
+            "type": "string"
+          },
+          "link": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "crop": {
+            "type": "string"
+          },
+          "autoplay": {
+            "type": "integer"
+          },
+          "showinpreview": {
+            "type": "integer"
+          },
+          "showinstructureddata": {
+            "type": "integer"
+          },
+          "files": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "xml": {
+          "name": "Assets"
+        }
+      },
+      "BulletsElement": {
+        "type": "object",
+        "description": "Bullets content element with CType equal to bullets",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "bulletsTtype": {
+            "type": "integer"
+          },
+          "bodytext": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "EnumerationElement"
+        }
+      },
+      "Category": {
+        "type": "object",
+        "required": [
+          "uid"
+        ],
+        "nullable": true,
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "Category"
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "ForumBoard": {
+        "type": "object",
+        "required": [
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "wlBoardId": {
+            "type": "integer"
+          },
+          "boardTitle": {
+            "type": "string"
+          },
+          "threads": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ForumThread"
+            }
+          }
+        },
+        "xml": {
+          "name": "ForumBoard"
+        }
+      },
+      "ForumThread": {
+        "type": "object",
+        "required": [
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "wlThreadId": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "answers": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "board": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "ForumBoard"
+        }
+      },
+      "FtIntroboxElement": {
+        "type": "object",
+        "description": "Intobox content element with CType equal to ftcustomcontentelements_introbox",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "txFtintroboxUpHeadline": {
+            "type": "string"
+          },
+          "txFtintroboxUpContent": {
+            "$ref": "#/paths/~1page~1%7BpageId%7D/get/responses/200/content/application~1json/schema/properties/contentElements"
+          },
+          "txFtintroboxDownHeadline": {
+            "type": "string"
+          },
+          "txFtintroboxDownRef1": {
+            "type": "string"
+          },
+          "txFttintroboxDownContent": {
+            "$ref": "#/paths/~1page~1%7BpageId%7D/get/responses/200/content/application~1json/schema/properties/contentElements"
+          },
+          "txFtintroboxDownRef2": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "FtIntroboxElement"
+        }
+      },
+      "HeaderElement": {
+        "type": "object",
+        "description": "Header content element with CType equal to header",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "HeaderElement"
+        }
+      },
+      "HtmlContent": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "HtmlContent"
+        }
+      },
+      "NavigationPage": {
+        "type": "object",
+        "required": [
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "nav_title": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "link": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "hasSubpages": {
+            "type": "boolean"
+          },
+          "subpages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NavigationPage"
+            }
+          }
+        },
+        "xml": {
+          "name": "NavigationPage"
+        }
+      },
+      "Page": {
+        "type": "object",
+        "required": [
+          "doktype",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "hidden": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "doktype": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "shortcut": {
+            "type": "integer"
+          },
+          "shortcut_mode": {
+            "type": "integer"
+          },
+          "subtitle": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "integer"
+          },
+          "target": {
+            "type": "string"
+          },
+          "media": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "lastUpdated": {
+            "type": "integer"
+          },
+          "keywords": {
+            "type": "string"
+          },
+          "cacheTimeout": {
+            "type": "integer"
+          },
+          "cacheTags": {
+            "type": "string"
+          },
+          "newUntil": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "noSearch": {
+            "type": "integer"
+          },
+          "abstract": {
+            "type": "string"
+          },
+          "nav_title": {
+            "type": "string"
+          },
+          "navHide": {
+            "type": "integer"
+          },
+          "contentFromPid": {
+            "type": "integer"
+          },
+          "mountPid": {
+            "type": "integer"
+          },
+          "mountPidOl": {
+            "type": "integer"
+          },
+          "backendLayout": {
+            "type": "string"
+          },
+          "backendLayoutNextLevel": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          },
+          "txFtsiteAuthors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Author"
+            }
+          },
+          "txFtsiteLinklist": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          },
+          "txFtsiteAffiliateTextVisible": {
+            "type": "integer"
+          },
+          "txFtsiteSectionNav": {
+            "type": "integer"
+          },
+          "txFtsiteNlpopupoverlayVisible": {
+            "type": "integer"
+          },
+          "txFtsiteNlpopupoverlayContent": {
+            "type": "string"
+          },
+          "txFtsiteSignupwallContent": {
+            "type": "string"
+          },
+          "txFtsiteSignupwallEditable": {
+            "type": "integer"
+          },
+          "txFtsiteDisableCookiebanner": {
+            "type": "integer"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "seo_title": {
+            "type": "string"
+          },
+          "noIndex": {
+            "type": "integer"
+          },
+          "noFollow": {
+            "type": "integer"
+          },
+          "ogTitle": {
+            "type": "string"
+          },
+          "ogDescription": {
+            "type": "string"
+          },
+          "ogImage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "twitterTitle": {
+            "type": "string"
+          },
+          "twitterDescription": {
+            "type": "string"
+          },
+          "twitterImage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "twitterCard": {
+            "type": "string"
+          },
+          "canonicalLink": {
+            "type": "string"
+          },
+          "sitemapPriority": {
+            "oneOf": [
+              {
+                "type": "number",
+                "format": "float"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "sitemapChangefreq": {
+            "type": "string"
+          },
+          "txFtauthorsExpert": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Author"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "txFtsiteNlpopupoverlayHeadline": {
+            "type": "string"
+          },
+          "txFtsiteDisableIntroImage": {
+            "type": "integer"
+          },
+          "txFtalertAlert": {
+            "type": "object",
+            "required": [
+              "uid"
+            ],
+            "nullable": true,
+            "properties": {
+              "uid": {
+                "type": "integer"
+              },
+              "pid": {
+                "type": "integer"
+              },
+              "tstamp": {
+                "type": "integer"
+              },
+              "crdate": {
+                "type": "integer"
+              },
+              "sorting": {
+                "type": "integer"
+              },
+              "starttime": {
+                "type": "integer"
+              },
+              "endtime": {
+                "type": "integer"
+              },
+              "title": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "link": {
+                "$ref": "#/components/schemas/Link"
+              },
+              "categories": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Category"
+                }
+              }
+            },
+            "xml": {
+              "name": "Alert"
+            }
+          },
+          "txFtsiteMarketingLpType": {
+            "type": "string"
+          },
+          "txFtsiteMarketingLpText": {
+            "type": "string"
+          },
+          "txFtsiteMarketingLpPrimarybuttonLabel": {
+            "type": "string"
+          },
+          "txFtsiteMarketingLpPrimarybuttonLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "txFtsiteMarketingLpSecondarybuttonLabel": {
+            "type": "string"
+          },
+          "txFtsiteMarketingLpSecondarybuttonLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "txSchemaWebpagetype": {
+            "type": "string"
+          },
+          "txFtsiteLinklistSingle": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          },
+          "txFtsiteHideOnDevice": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "xml": {
+          "name": "Page"
+        }
+      },
+      "TableElement": {
+        "type": "object",
+        "description": "Table content element with CType equal to table",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "bodytext": {
+            "type": "string"
+          },
+          "tableDelimiter": {
+            "type": "integer"
+          },
+          "tableEnclosure": {
+            "type": "integer"
+          },
+          "tableCaption": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "tableClass": {
+            "type": "string"
+          },
+          "tableHeaderPosition": {
+            "type": "integer"
+          },
+          "tableTfoot": {
+            "type": "integer"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          },
+          "rowDescription": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "TableElement"
+        }
+      },
+      "TextElement": {
+        "type": "object",
+        "description": "Text content element with CType equal to text",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "bodytext": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "TextElement"
+        }
+      },
+      "TextMediaElement": {
+        "type": "object",
+        "description": "Text and media content element with CType equal to textmedia",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "bodytext": {
+            "type": "string"
+          },
+          "mediaTypeSelector": {
+            "type": "string"
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "forumBoard": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ForumBoard"
+            }
+          },
+          "articleReference": {
+            "$ref": "#/components/schemas/Page"
+          },
+          "headline": {
+            "type": "string"
+          },
+          "imagewidth": {
+            "type": "integer"
+          },
+          "imageheight": {
+            "type": "integer"
+          },
+          "imageborder": {
+            "type": "integer"
+          },
+          "imageorient": {
+            "type": "integer"
+          },
+          "imagecols": {
+            "type": "integer"
+          },
+          "imageZoom": {
+            "type": "integer"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "TextMediaElement"
+        }
+      },
+      "DividerElement": {
+        "type": "object",
+        "description": "Divider content element with CType equal to div",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "DividerElement"
+        }
+      },
+      "FeaturelistElement": {
+        "type": "object",
+        "description": "Feature list content element with CType equal to ftcustomcontentelements_featurelist",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "featureHeader": {
+            "type": "string"
+          },
+          "featureButtonLabel": {
+            "type": "string"
+          },
+          "featureButtonLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "featureitems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "uid"
+              ],
+              "properties": {
+                "uid": {
+                  "type": "integer"
+                },
+                "pid": {
+                  "type": "integer"
+                },
+                "tstamp": {
+                  "type": "integer"
+                },
+                "crdate": {
+                  "type": "integer"
+                },
+                "sorting": {
+                  "type": "integer"
+                },
+                "starttime": {
+                  "type": "integer"
+                },
+                "endtime": {
+                  "type": "integer"
+                },
+                "contentid": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "bodytext": {
+                  "type": "string"
+                },
+                "emoticon": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Assets"
+                  }
+                },
+                "link": {
+                  "$ref": "#/components/schemas/Link"
+                }
+              },
+              "xml": {
+                "name": "Feature"
+              }
+            }
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "FeaturelistElement"
+        }
+      },
+      "FtTrustElement": {
+        "type": "object",
+        "description": "Trust content element with CType equal to ftcustomcontentelements_trust",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "mainTitle": {
+            "type": "string"
+          },
+          "secondTitle": {
+            "type": "string"
+          },
+          "box": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FtTrustBox"
+            }
+          },
+          "txFtcustomcontentelementsToggleSticky": {
+            "type": "integer"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "FtTrustElement"
+        }
+      },
+      "FtTrustBox": {
+        "type": "object",
+        "required": [
+          "uid"
+        ],
+        "properties": {
+          "number": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "FtTrustBox"
+        }
+      },
+      "ImageElement": {
+        "type": "object",
+        "description": "Images content element with CType equal to image",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "image": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "imagewidth": {
+            "type": "integer"
+          },
+          "imageheight": {
+            "type": "integer"
+          },
+          "imageborder": {
+            "type": "integer"
+          },
+          "imageorient": {
+            "type": "integer"
+          },
+          "imagecols": {
+            "type": "integer"
+          },
+          "imageZoom": {
+            "type": "integer"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "ImageElement"
+        }
+      },
+      "ExpertQuoteElement": {
+        "type": "object",
+        "description": "Expert quote content element with CType equal to list and list_type equal to ftauthors_quote",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          },
+          "expert": {
+            "$ref": "#/components/schemas/Author"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "ExpertQuoteElement"
+        }
+      },
+      "Author": {
+        "type": "object",
+        "required": [
+          "uid"
+        ],
+        "nullable": true,
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "image": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "pixelcounterAuthorId": {
+            "type": "string"
+          },
+          "twitter": {
+            "type": "string"
+          },
+          "facebook": {
+            "type": "string"
+          },
+          "xing": {
+            "type": "string"
+          },
+          "expert": {
+            "type": "integer"
+          },
+          "expertLabel": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "iseditorinchief": {
+            "type": "integer"
+          },
+          "personalUrl": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "Author"
+        }
+      },
+      "RecommendationboxElement": {
+        "type": "object",
+        "description": "Recommendation content element with CType equal to ftcustomcontentelements_recommendationbox",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "providerLogo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "providerName": {
+            "type": "string"
+          },
+          "productName": {
+            "type": "string"
+          },
+          "positive": {
+            "type": "string"
+          },
+          "neutral": {
+            "type": "string"
+          },
+          "negative": {
+            "type": "string"
+          },
+          "externalLink": {
+            "type": "string"
+          },
+          "communityLink": {
+            "type": "string"
+          },
+          "communityLinkText": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "RecommendationboxElement"
+        }
+      },
+      "NewsletterregisterformElement": {
+        "type": "object",
+        "description": "Newsletter content element with CType equal to ftcustomcontentelements_newsletterregisterform",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "NewsletterregisterformElement"
+        }
+      },
+      "News": {
+        "type": "object",
+        "required": [
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          },
+          "notes": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "teaser": {
+            "type": "string"
+          },
+          "bodytext": {
+            "type": "string"
+          },
+          "datetime": {
+            "type": "integer"
+          },
+          "archive": {
+            "type": "integer"
+          },
+          "author": {
+            "type": "string"
+          },
+          "authorEmail": {
+            "type": "string"
+          },
+          "related": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/News"
+            }
+          },
+          "relatedFrom": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/News"
+            }
+          },
+          "falRelatedFiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "relatedLinks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "type": {
+            "type": "string"
+          },
+          "keywords": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NewsTag"
+            }
+          },
+          "falMedia": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "internalurl": {
+            "type": "string"
+          },
+          "externalurl": {
+            "type": "string"
+          },
+          "istopnews": {
+            "type": "integer"
+          },
+          "pathSegment": {
+            "type": "string"
+          },
+          "alternativeTitle": {
+            "type": "string"
+          },
+          "sitemapChangefreq": {
+            "type": "string"
+          },
+          "sitemapPriority": {
+            "oneOf": [
+              {
+                "type": "number",
+                "format": "float"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "carouselColor": {
+            "type": "string"
+          },
+          "showAffiliateText": {
+            "type": "string"
+          },
+          "txFtauthorsExpert": {
+            "$ref": "#/components/schemas/Author"
+          },
+          "txFtsiteAuthors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Author"
+            }
+          },
+          "firebaseLinkNewsletter": {
+            "type": "string"
+          },
+          "firebaseLinkInstagram": {
+            "type": "string"
+          },
+          "firebaseLinkApp": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "News"
+        }
+      },
+      "NewsTag": {
+        "type": "object",
+        "required": [
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "seoTitle": {
+            "type": "string"
+          },
+          "seoDescription": {
+            "type": "string"
+          },
+          "seoHeadline": {
+            "type": "string"
+          },
+          "seoText": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "NewsTag"
+        }
+      },
+      "FAQElement": {
+        "type": "object",
+        "description": "FAQ content element with CType equal to ftcustomcontentelements_faq",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "faq": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FAQItem"
+            }
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "FAQElement"
+        }
+      },
+      "FAQItem": {
+        "type": "object",
+        "required": [
+          "uid"
+        ],
+        "properties": {
+          "featured": {
+            "type": "integer"
+          },
+          "question": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "FAQItem"
+        }
+      },
+      "ShortcutElement": {
+        "type": "object",
+        "description": "Has Reference to other ContentElements",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "type": "string"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "content": {
+            "$ref": "#/paths/~1page~1%7BpageId%7D/get/responses/200/content/application~1json/schema/properties/contentElements"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "ShortcutElement"
+        }
+      },
+      "CollapsibleElement": {
+        "type": "object",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "type": "string"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "collapsibleTitle": {
+            "type": "string"
+          },
+          "collapsibleContent": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "CollapsibleElement"
+        }
+      },
+      "PodcastElement": {
+        "type": "object",
+        "description": "Podcast content element with CType equal to ftcustomcontentelements_podcast",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "PodcastTitle": {
+            "type": "string"
+          },
+          "PodcastScript": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "PodcastElement"
+        }
+      },
+      "QuoteElement": {
+        "type": "object",
+        "description": "Quote content element with CType equal to ftcustomcontentelements_quote",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "AuthorImage": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "AuthorName": {
+            "type": "string"
+          },
+          "AuthorMessage": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "QuoteElement"
+        }
+      },
+      "Link": {
+        "type": "object",
+        "nullable": true,
+        "required": [
+          "href"
+        ],
+        "properties": {
+          "linktxt": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "pageuid": {
+            "type": "integer",
+            "nullable": true
+          },
+          "class": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "Link"
+        }
+      },
+      "HeroElement": {
+        "type": "object",
+        "description": "Hero stage content element with CType equal to ftcustomcontentelements_herostage",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "Guidestype": {
+            "type": "integer"
+          },
+          "GuidesLarge": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          },
+          "GuidesSmall": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "HeroElement"
+        }
+      },
+      "SearchBoxElement": {
+        "type": "object",
+        "description": "Search box content element with CType equal to ftcustomcontentelements_searchbox",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "headline": {
+            "type": "string"
+          },
+          "defaulttext": {
+            "type": "string"
+          },
+          "buttontext": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "SearchBoxElement"
+        }
+      },
+      "RessortsElement": {
+        "type": "object",
+        "description": "Ressorts content element with CType equal to ftcustomcontentelements_ressorts",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "ressorts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "Ressort row element",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "subtitle": {
+                  "type": "string"
+                },
+                "category": {
+                  "$ref": "#/components/schemas/Page"
+                },
+                "topics": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Page"
+                  }
+                },
+                "furtherTopics": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Page"
+                  }
+                },
+                "linkToPage": {
+                  "type": "integer"
+                }
+              },
+              "xml": {
+                "name": "Ressort"
+              }
+            }
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "RessortsElement"
+        }
+      },
+      "SocialMediaBarElement": {
+        "type": "object",
+        "description": "Social Media Bar element with CType equal to ftcustomcontentelements_socialmediabar",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "podcastlink": {
+            "$ref": "#/components/schemas/SocialMediaBarElement/properties/tiktoklink"
+          },
+          "podcasttopics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "youtubelink": {
+            "$ref": "#/components/schemas/SocialMediaBarElement/properties/tiktoklink"
+          },
+          "youtubetopics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "instagramlink": {
+            "$ref": "#/components/schemas/SocialMediaBarElement/properties/tiktoklink"
+          },
+          "instagramtopics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "tiktoklink": {
+            "type": "object",
+            "nullable": true,
+            "required": [
+              "href"
+            ],
+            "properties": {
+              "linktxt": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "pageuid": {
+                "type": "integer",
+                "nullable": true
+              },
+              "class": {
+                "type": "string"
+              }
+            },
+            "xml": {
+              "name": "Link"
+            }
+          },
+          "tiktoktopics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "SocialMediaBarElement"
+        }
+      },
+      "StickyElement": {
+        "type": "object",
+        "description": "Sticky content element with CType equal to ftcustomcontentelements_sticky",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "stickytitle": {
+            "type": "string"
+          },
+          "stickycontent": {
+            "type": "string"
+          },
+          "stickysubscribed": {
+            "type": "string"
+          },
+          "stickywelcomeBack": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "StickyElement"
+        }
+      },
+      "BenefitsElement": {
+        "type": "object",
+        "description": "Benefits content element with CType equal to ftcustomcontentelements_benefits",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "BenefitsElement"
+        }
+      },
+      "ReputationboxElement": {
+        "type": "object",
+        "description": "Reputation box content element with CType equal to ftcustomcontentelements_reputationbox",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "reputationheader": {
+            "type": "string"
+          },
+          "reputationimages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "reputationitems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "uid"
+              ],
+              "properties": {
+                "uid": {
+                  "type": "integer"
+                },
+                "pid": {
+                  "type": "integer"
+                },
+                "tstamp": {
+                  "type": "integer"
+                },
+                "crdate": {
+                  "type": "integer"
+                },
+                "sorting": {
+                  "type": "integer"
+                },
+                "starttime": {
+                  "type": "integer"
+                },
+                "endtime": {
+                  "type": "integer"
+                },
+                "content": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "bodytext": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Assets"
+                  }
+                }
+              },
+              "xml": {
+                "name": "Reputation"
+              }
+            }
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "ReputationboxElement"
+        }
+      },
+      "TrustPilotElement": {
+        "type": "object",
+        "description": "TrustPilotElement content element with CType equal to ftcustomcontentelements_trustpilot",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "TrustPilotElement"
+        }
+      },
+      "ExpertElement": {
+        "type": "object",
+        "description": "Expert content element with CType equal to ftcustomcontentelements_experts, bodytext contains data from flexform.settings.subline, headerImage contains data from flexform.settings.link",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "bodytext": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "ExpertElement"
+        }
+      },
+      "HtmlElement": {
+        "type": "object",
+        "description": "Html content element with CType equal to html",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "description": "only backend for info what the html do",
+            "type": "string"
+          },
+          "bodytext": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "HtmlElement"
+        }
+      },
+      "PopularElement": {
+        "type": "object",
+        "description": "Popular content element with CType equal to ftcustomcontentelements_popular",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "guides": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "PopularElement"
+        }
+      },
+      "MenuSitemapPageElement": {
+        "type": "object",
+        "description": "Menu Sitemap Page content element with CType equal to menu_sitemap_pages",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "pages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NavigationPage"
+            }
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "MenuSitemapPageElement"
+        }
+      },
+      "MenuPagesElement": {
+        "type": "object",
+        "description": "Menu Pages content element with CType equal to menu_pages",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "pages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "MenuPagesElement"
+        }
+      },
+      "MenuSubPagesElement": {
+        "type": "object",
+        "description": "Menu Sub Pages content element with CType equal to menu_subpages",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "pages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NavigationPage"
+            }
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "MenuSubPagesElement"
+        }
+      },
+      "CoronaMapElement": {
+        "type": "object",
+        "description": "Corona map content element with CType equal to ftcustomcontentelements_coronamap",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "CoronaMapElement"
+        }
+      },
+      "StyleGuideElement": {
+        "type": "object",
+        "description": "Style Guide content element with CType equal to ftcustomcontentelements_styleguide",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "StyleGuideElement"
+        }
+      },
+      "CtaSectionElement": {
+        "type": "object",
+        "description": "Cta Section content element with CType equal to ftcustomcontentelements_ctasection",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "CtaSectionElement"
+        }
+      },
+      "DealsElement": {
+        "type": "object",
+        "description": "Deals content element with CType equal to list and list_type equal to ftdeals_list",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "cruser_id": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "deals": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "uid"
+              ],
+              "nullable": true,
+              "properties": {
+                "uid": {
+                  "type": "integer"
+                },
+                "pid": {
+                  "type": "integer"
+                },
+                "tstamp": {
+                  "type": "integer"
+                },
+                "crdate": {
+                  "type": "integer"
+                },
+                "sorting": {
+                  "type": "integer"
+                },
+                "starttime": {
+                  "type": "integer"
+                },
+                "endtime": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "sharelink": {
+                  "type": "string"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "moredescription": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Assets"
+                  }
+                },
+                "link": {
+                  "type": "string"
+                },
+                "expiredate": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "string"
+                }
+              },
+              "xml": {
+                "name": "Deal"
+              }
+            }
+          },
+          "pages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            }
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "DealsElement"
+        }
+      },
+      "AppPromoElement": {
+        "type": "object",
+        "description": "Text and media content element with CType equal to ftcustomcontentelements_apppromo",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "bodytext": {
+            "type": "string"
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "headline": {
+            "type": "string"
+          },
+          "imagewidth": {
+            "type": "integer"
+          },
+          "imageheight": {
+            "type": "integer"
+          },
+          "imageborder": {
+            "type": "integer"
+          },
+          "imageorient": {
+            "type": "integer"
+          },
+          "imagecols": {
+            "type": "integer"
+          },
+          "imageZoom": {
+            "type": "integer"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "AppPromoElement"
+        }
+      },
+      "DealsPromoElement": {
+        "type": "object",
+        "description": "Text and media content element with CType equal to ftcustomcontentelements_dealspromo",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "bodytext": {
+            "type": "string"
+          },
+          "mediaTypeSelector": {
+            "type": "string"
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "headline": {
+            "type": "string"
+          },
+          "imagewidth": {
+            "type": "integer"
+          },
+          "imageheight": {
+            "type": "integer"
+          },
+          "imageborder": {
+            "type": "integer"
+          },
+          "imageorient": {
+            "type": "integer"
+          },
+          "imagecols": {
+            "type": "integer"
+          },
+          "imageZoom": {
+            "type": "integer"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "DealsPromoElement"
+        }
+      },
+      "ExperiencePortalPromoElement": {
+        "type": "object",
+        "description": "ExperiencePortalPromoPromoElement content element with CType equal to ftcustomcontentelements_experienceportalpromo",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "bodytext": {
+            "type": "string"
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "headline": {
+            "type": "string"
+          },
+          "imagewidth": {
+            "type": "integer"
+          },
+          "imageheight": {
+            "type": "integer"
+          },
+          "imageborder": {
+            "type": "integer"
+          },
+          "imageorient": {
+            "type": "integer"
+          },
+          "imagecols": {
+            "type": "integer"
+          },
+          "imageZoom": {
+            "type": "integer"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "ExperiencePortalPromoElement"
+        }
+      },
+      "FtSupportPromoElement": {
+        "type": "object",
+        "description": "Text and media content element with CType equal to ftcustomcontentelements_ftsupportpromo",
+        "required": [
+          "CType",
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer"
+          },
+          "pid": {
+            "type": "integer"
+          },
+          "tstamp": {
+            "type": "integer"
+          },
+          "crdate": {
+            "type": "integer"
+          },
+          "sorting": {
+            "type": "integer"
+          },
+          "CType": {
+            "type": "string"
+          },
+          "colPos": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "header": {
+            "type": "string"
+          },
+          "headerLayout": {
+            "type": "string"
+          },
+          "headerPosition": {
+            "type": "string"
+          },
+          "date": {
+            "type": "integer"
+          },
+          "headerLink": {
+            "$ref": "#/components/schemas/Link"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "txFtsiteDataTrack": {
+            "type": "string"
+          },
+          "bodytext": {
+            "type": "string"
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Assets"
+            }
+          },
+          "headline": {
+            "type": "string"
+          },
+          "imagewidth": {
+            "type": "integer"
+          },
+          "imageheight": {
+            "type": "integer"
+          },
+          "imageborder": {
+            "type": "integer"
+          },
+          "imageorient": {
+            "type": "integer"
+          },
+          "imagecols": {
+            "type": "integer"
+          },
+          "imageZoom": {
+            "type": "integer"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "frameClass": {
+            "type": "string"
+          },
+          "spaceBeforeClass": {
+            "type": "string"
+          },
+          "spaceAfterClass": {
+            "type": "string"
+          },
+          "sectionIndex": {
+            "type": "boolean"
+          },
+          "linkToTop": {
+            "type": "boolean"
+          },
+          "starttime": {
+            "type": "integer"
+          },
+          "endtime": {
+            "type": "integer"
+          },
+          "feGroup": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        },
+        "xml": {
+          "name": "FtSupportPromoElement"
+        }
+      }
+    },
+    "responses": {
+      "UnexpectedError": {
+        "description": "unexpected error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "NullResponse": {
+        "description": "Null response"
+      },
+      "Navigation": {
+        "description": "navigation array",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NavigationPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

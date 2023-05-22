@@ -4,7 +4,7 @@ import JsonPath from 'jsonpath';
 import Logger from './logger';
 import * as Models from './models/index';
 import addFormats from 'ajv-formats';
-import Ajv from 'ajv';
+import Ajv  from 'ajv';
 const defaultLog = new Logger('cypress-swagger-validation');
 
 export function SwaggerValidation(config: object) {
@@ -64,6 +64,9 @@ export function SwaggerValidation(config: object) {
       }
       if (!options.responseSchema) {
         return new Error('Response Schema was not specified (responseSchema)');
+      }
+      if(!options.contentType) {
+        options.contentType = 'application/json';
       }
 
       const verbose = options.verbose || false;
