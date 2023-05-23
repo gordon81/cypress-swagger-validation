@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "build": "rm -rf lib && tsc --project tsconfig.build.json",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",

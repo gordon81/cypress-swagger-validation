@@ -8,7 +8,7 @@ const config: JestConfigWithTsJest = {
   transform: {
     '^.+\\.(ts|tsx)?$': ['ts-jest', { useESM: true }],
   },
-  testPathIgnorePatterns: ['./node_modules'],
+  testPathIgnorePatterns: ['<rootDir>/node_modules'],
 };
 
 export default config;

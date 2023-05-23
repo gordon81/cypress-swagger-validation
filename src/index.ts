@@ -1,13 +1,13 @@
 import SwaggerParser from '@apidevtools/swagger-parser';
 import Parser from 'json-schema-ref-parser';
 import JsonPath from 'jsonpath';
-import Logger from './logger';
 import * as Models from './models/index';
 import addFormats from 'ajv-formats';
 import Ajv  from 'ajv';
+import Logger from './logger';
 const defaultLog = new Logger('cypress-swagger-validation');
 
-export function SwaggerValidation(config: object) {
+function SwaggerValidation(config: object) {
   const swaggerSchema: any = [];
   defaultLog.success('Plugin Loaded');
 

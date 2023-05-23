@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import chalk from 'chalk';
-export class Logger {
+
+class Logger {
   private title: string;
 
   constructor(section: string) {
