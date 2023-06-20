@@ -122,7 +122,8 @@ paths:
     get:
       description: Returns navigation
       summary: navigation
-      operationId: 'Finanztip\FtApi\Controller\NavigationController:getNavigation'
+      operationId: 'Finanztip\FtApi\Controller
+  avigationController:getNavigation'
       parameters:
         - $ref: '#/components/parameters/entryPoints'
         - $ref: '#/components/parameters/depth'

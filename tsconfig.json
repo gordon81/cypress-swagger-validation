@@ -4,7 +4,7 @@
     "module": "commonjs",
     "lib": ["ES2015", "DOM"],
     "strict": false,
-    "types": ["jest"],
+    "types": ["jest","node"],
     "noEmit": true
   },
   "include": ["./src/**/*", "./tests/**/*"],

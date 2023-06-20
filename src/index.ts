@@ -1,6 +1,6 @@
-import SwaggerParser from '@apidevtools/swagger-parser';
-import Parser from 'json-schema-ref-parser';
-import JsonPath from 'jsonpath';
+import * as SwaggerParser from "@apidevtools/swagger-parser";
+import * as Parser from 'json-schema-ref-parser';
+import * as JsonPath from 'jsonpath';
 import * as Models from './models/index';
 import addFormats from 'ajv-formats';
 import Ajv  from 'ajv';
@@ -134,11 +134,10 @@ function SwaggerValidation(config: object) {
     ): Promise<Error | null> => {
       const log = new Logger('validateSwaggerFile');
       const schema = await getSwaggerSchema(config, options?.file || null);
-
       try {
-        let api = await SwaggerParser.validate(schema || '', {
-          dereference: { circular: 'ignore' },
-        });
+        let parser = new SwaggerParser();
+        let api = await parser.validate(schema || '');
+      //  let api = await SwaggerParser.validate(schema || '');
         log.info('API name: %s, Version: %s', api.info.title, api.info.version);
         return null;
       } catch (err) {
